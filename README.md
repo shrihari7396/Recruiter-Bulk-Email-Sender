@@ -12,7 +12,19 @@ npm install
 Set-Location ..
 ```
 
-Before running, open [`run-dev.ps1`](./run-dev.ps1) in a text editor and change the SMTP settings at the top of the file: `$smtpHost`, `$smtpPort`, `$smtpUsername`, `$smtpPassword`, and `$mailFrom`. For Gmail, use an app password instead of your regular account password. Do not share the script or commit real credentials to source control.
+### Where to enter SMTP credentials
+
+Open the root-level [`run-dev.ps1`](./run-dev.ps1) file in a text editor. At the very top, under `# EDIT THESE SETTINGS before running the script.`, replace the example values in this block with your own SMTP settings:
+
+```powershell
+$smtpHost = "smtp.gmail.com"                 # Your provider's SMTP server
+$smtpPort = "587"                            # Your provider's SMTP port
+$smtpUsername = "your-email@gmail.com"       # Your SMTP login/email
+$smtpPassword = "your-app-password"          # Your SMTP password or app password
+$mailFrom = $smtpUsername                    # Sender address shown on outgoing mail
+```
+
+For example, set `$smtpUsername` to the email address used to log in and `$smtpPassword` to its SMTP/app password. If your provider requires another SMTP server or port, update `$smtpHost` and `$smtpPort` too. For Gmail, use an app password instead of your regular account password. Keep your real credentials private; do not share the script or commit real credentials to source control.
 
 From the repository root, start the backend first and then the frontend:
 
